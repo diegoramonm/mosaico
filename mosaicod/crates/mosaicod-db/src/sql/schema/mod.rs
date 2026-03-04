@@ -17,3 +17,6 @@ pub use topic_record::*;
 
 mod session_record;
 pub use session_record::*;
+
+mod api_key_record;
+pub use api_key_record::*;

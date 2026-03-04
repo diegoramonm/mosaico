@@ -12,6 +12,9 @@ pub enum Error {
     /// typically to or from JSON in the database.
     #[error("serialization error")]
     SerializationError(#[from] serde_json::Error),
+    /// Found some bad data inside the database
+    #[error("bad data: {0}")]
+    BadData(String),
     /// An attempt was made to handle an unrecognized or unsupported report type.
     #[error("unknown notification type")]
     UnknownNotificationType(String),

@@ -25,5 +25,8 @@ pub use group::*;
 mod compilers;
 use compilers::*;
 
+mod api_key_record;
+pub use api_key_record::*;
+
 mod builders;
 use builders::*;
