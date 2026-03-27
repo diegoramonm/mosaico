@@ -13,7 +13,7 @@ It handles the complex orchestration of:
 4.  **Configuration:** Managing custom message definitions via `ROSTypeRegistry`.
 
 Typical usage as a script:
-    $ mosaico.ros_injector ./data.mcap --name "Test_Run_01"
+    $ mosaicolabs.ros_injector ./data.mcap --name "Test_Run_01"
 
 Typical usage as a library:
     config = ROSInjectionConfig(file_path=Path("data.mcap"), ...)
@@ -671,6 +671,20 @@ def ros_injector():
         "If not set, defaults to ROS2_HUMBLE.",
     )
 
+    # Advanced Arguments
+    parser.add_argument(
+        "--api-key",
+        default=None,
+        help="Mosaico API-Key",
+    )
+
+    # Advanced Arguments
+    parser.add_argument(
+        "--tls-cert",
+        default=None,
+        help="Path of the .cert file for secure connection",
+    )
+
     parser.add_argument(
         "--log",
         "-l",
@@ -708,6 +722,8 @@ def ros_injector():
         topics=args.topics,
         ros_distro=selected_distro,
         log_level=args.log,
+        tls_cert_path=args.tls_cert,
+        mosaico_api_key=args.api_key,
     )
 
     # --- Execution ---
